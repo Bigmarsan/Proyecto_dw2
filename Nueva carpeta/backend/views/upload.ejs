@@ -1,0 +1,21 @@
+<!-- views/upload.ejs -->
+<h2>Subir Imagen</h2>
+<div class="upload-container">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="image">Seleccionar Imagen:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" rows="3" required></textarea>
+        
+        <label>
+            <input type="checkbox" name="publish" value="true"> Publicar en la comunidad
+        </label>
+        
+        <button type="submit">Subir Imagen</button>
+    </form>
+    
+</div>
+
+
+

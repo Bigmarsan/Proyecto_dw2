@@ -1,0 +1,73 @@
+<h2>Bienvenido, <%= userProfile.name %>!</h2>
+
+<div>
+    <p><strong>Email:</strong> <%= userProfile.email %></p>
+</div>
+
+<a href="/upload" class="button-primary">Subir Imagen</a>
+<a href="/community" class="button-primary">Ver Comunidad</a>
+
+<h3>Tus Imágenes</h3>
+<% if (images.length > 0) { %>
+    <div class="image-gallery">
+        <% images.forEach(image => { %>
+            <div class="image-item">
+                <div class="profile-image-container">
+                    <img src="<%= image.imageUrl %>" alt="<%= image.description %>">
+                </div>
+                <p><%= image.description %></p>
+                <p><strong>Publicado por:</strong> <%= image.publishedBy %></p>
+                <p><strong>Fecha de publicación:</strong> <%= image.publishedAt ? image.publishedAt.toLocaleString() : 'No disponible' %></p>
+
+                <!-- Botón para ver la imagen completa -->
+                <button class="view-full-btn" data-image="<%= image.imageUrl %>">Ver Imagen Completa</button>
+            </div>
+        <% }) %>
+    </div>
+<% } else { %>
+    <p>No has subido ninguna imagen todavía.</p>
+<% } %>
+
+<!-- Modal para mostrar la imagen completa -->
+<div id="imageModal" class="modal" style="display: none;">
+    <span class="close-btn">&times;</span>
+    <img class="modal-content" id="fullImage">
+</div>
+
+<script>
+    // Funcionalidad del modal para ver la imagen completa
+    document.querySelectorAll('.view-full-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const imageUrl = event.target.getAttribute('data-image');
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("fullImage");
+
+            // Asigna la URL de S3 al src del modal
+            modalImage.src = imageUrl;
+            modal.style.display = "block"; // Muestra el modal
+        });
+    });
+
+    // Cerrar el modal al hacer clic en el botón de cierre
+    document.querySelector('.close-btn').addEventListener('click', () => {
+        document.getElementById("imageModal").style.display = "none";
+    });
+
+    // Cerrar el modal al hacer clic fuera de la imagen
+    window.addEventListener('click', (event) => {
+        const modal = document.getElementById("imageModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+

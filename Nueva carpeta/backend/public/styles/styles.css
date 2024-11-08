@@ -1,0 +1,308 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.navbar-links a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+/* Contenedor principal */
+.content-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.footer a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Contenedor de subida de imagen */
+.upload-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.upload-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.upload-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.upload-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.upload-form input[type="file"],
+.upload-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+}
+
+.submit-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}
+
+/* Estilos específicos para las imágenes en el perfil */
+/* Contenedor para las imágenes en el perfil */
+.profile-image-container {
+    width: 100%; /* Ajusta el ancho del contenedor al 100% de su contenedor padre */
+    max-width: 300px; /* Limita el ancho máximo para cada imagen en el perfil */
+    margin: 10px auto;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden; /* Oculta cualquier desbordamiento de imagen */
+}
+
+.profile-image-container img {
+    width: 100%; /* Ajusta la imagen al ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 300px; /* Limita la altura máxima de la imagen */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor, recortando si es necesario */
+    border-radius: 5px; /* Borde redondeado para la imagen */
+    display: block;
+    margin: 0 auto;
+}
+/* Estilos para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+}
+
+.modal-content {
+    display: block;
+    margin: 5% auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* Botón principal (para subir y ver comunidad) */
+.button-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.button-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Efecto de elevar ligeramente */
+}
+
+.button-primary:active {
+    transform: translateY(1px); /* Efecto de clic */
+}
+
+/* Botón secundario (Ver Imagen Completa, Eliminar) */
+.button-secondary {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-top: 5px;
+}
+
+.button-secondary:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.button-secondary:active {
+    transform: translateY(1px);
+}
+
+/* Botón de eliminar (estilo de advertencia) */
+.delete-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #dc3545; /* Color rojo */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-top: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.delete-btn:active {
+    transform: translateY(1px);
+}
+
+/* Ajustes para el enlace de regresar */
+.back-link {
+    color: #007bff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.back-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+/* Contenedor para la galería de imágenes en Community */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre las imágenes */
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Estilo para cada item de imagen */
+.image-item {
+    max-width: 300px; /* Tamaño máximo del contenedor de cada imagen */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para la imagen */
+.image-item img {
+    width: 100%; /* Ajusta la imagen al ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 5px;
+}

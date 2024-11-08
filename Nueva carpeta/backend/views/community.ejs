@@ -1,0 +1,92 @@
+<h2>Comunidad</h2>
+
+<% if (images.length > 0) { %>
+    <div class="image-gallery">
+        <% images.forEach(image => { %>
+            <div class="image-item">
+                <img src="<%= image.imageUrl %>" alt="<%= image.description %>">
+                
+                <p><%= image.description %></p>
+                <p><strong>Publicado por:</strong> <%= image.publishedBy %></p>
+                <p><strong>Fecha de publicación:</strong> <%= new Date(image.publishedAt).toLocaleString() %></p>
+
+                <!-- Botón de Like -->
+                <button class="like-btn" data-id="<%= image._id %>">
+                    Like (<span class="like-count"><%= image.likes ? image.likes.length : 0 %></span>)
+                </button>
+
+                <!-- Sección de comentarios -->
+                <div class="comments-section">
+                    <% image.comments.forEach(comment => { %>
+                        <p><strong><%= comment.userId.displayName %>:</strong> <%= comment.text %></p>
+                    <% }) %>
+                </div>
+
+                <!-- Formulario para agregar un comentario -->
+                <input type="text" class="comment-input" placeholder="Escribe un comentario..." data-id="<%= image._id %>">
+                <button class="comment-btn" data-id="<%= image._id %>">Comentar</button>
+            </div>
+        <% }) %>
+    </div>
+<% } else { %>
+    <p>No hay imágenes en la comunidad.</p>
+<% } %>
+
+<script>
+    // Función para manejar el botón de Like
+    document.querySelectorAll('.like-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const imageId = event.target.getAttribute('data-id');
+            fetch(`/upload/${imageId}/like`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.likesCount !== undefined) {
+                        event.target.querySelector('.like-count').textContent = data.likesCount;
+                    } else {
+                        console.error('Error al obtener el conteo de likes');
+                    }
+                })
+                .catch(error => console.error('Error en la solicitud de Like:', error));
+        });
+    });
+
+    // Función para manejar los comentarios
+    document.querySelectorAll('.comment-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const imageId = event.target.getAttribute('data-id');
+            const commentInput = document.querySelector(`.comment-input[data-id="${imageId}"]`);
+            const text = commentInput.value;
+
+            if (!text) {
+                alert('El comentario no puede estar vacío.');
+                return;
+            }
+
+            fetch(`/upload/${imageId}/comment`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const commentsSection = event.target.closest('.image-item').querySelector('.comments-section');
+                commentsSection.innerHTML = ''; // Limpia los comentarios existentes
+                data.comments.forEach(comment => {
+                    commentsSection.innerHTML += `<p><strong>${comment.userId.displayName}:</strong> ${comment.text}</p>`;
+                });
+                commentInput.value = ''; // Limpia el campo de entrada
+            })
+            .catch(error => console.error('Error en la solicitud de comentario:', error));
+        });
+    });
+</script>
+
+
+    
+    
+    
+    
+
+
+
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Red</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header class="navbar">
+        <div class="navbar-logo">
+            <h1>Red Social</h1>
+        </div>
+        <nav class="navbar-links">
+            <a href="/profile">Perfil</a>
+            <a href="/community">Comunidad</a>
+            <a href="/logout">Cerrar sesión</a>
+        </nav>
+    </header>
+
+    <!-- Contenedor principal para el contenido -->
+    <main class="content-container">
+        <%- body %> <!-- Aquí se insertará el contenido de cada vista -->
+    </main>
+
+    <!-- Footer con estilo profesional -->
+    <footer class="footer">
+        <p>© 2024 Mi Proyecto - Todos los derechos reservados</p>
+        <p><a href="/privacy-policy">Política de Privacidad</a> | <a href="/terms">Términos de Servicio</a></p>
+    </footer>
+</body>
+</html>
+
